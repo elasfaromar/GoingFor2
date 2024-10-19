@@ -18,9 +18,11 @@
     }
 
     &__footer {
+      background-color: trans;
       font-weight: bold;
       font-size: 80%;
       text-align: left;
+      padding-bottom: 1rem;
 
       &__release {
         text-transform: uppercase;
