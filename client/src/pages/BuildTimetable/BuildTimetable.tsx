@@ -16,6 +16,7 @@ function BuildTimetable() {
   const { jwt } = useAccountContext();
   const [scheduledEvents, setScheduledEvents] = useState<ScheduledEvent[]>([]);
   const [selectedEvents, setSelectedEvents] = useState<ScheduledEvent[]>([]);
+  const [timetableName, setTimetableName] = useState<string>(""); // Challenge 2: Save Timetable Name
   const navigate = useNavigate();
 
   const fetchScheduledEvents = async () => {
@@ -25,7 +26,7 @@ function BuildTimetable() {
 
   const createTimetable = async () => {
     const result = await ServiceAPI.createTimetable(
-      new Date().toISOString(),
+      timetableName, // Challenge 2: Save Timetable Name
       selectedEvents.map((event) => event.id.toString()),
       jwt,
     );
@@ -47,6 +48,17 @@ function BuildTimetable() {
         <Section title="Search">
           <SearchSection onSearch={fetchScheduledEvents} />
         </Section>
+
+        {/* Challenge 2: Save Timetable Name */}
+        <Section title="Timetable Name">
+          <input
+            type="text"
+            value={timetableName}
+            onChange={(e) => setTimetableName(e.target.value)}
+            placeholder="Enter a name for your timetable"
+          />
+        </Section>
+
         {scheduledEvents.length > 0 && (
           <Section title="Results">
             <ResultsSection
@@ -75,5 +87,6 @@ function BuildTimetable() {
     </Layout>
   );
 }
+
 
 export default BuildTimetable;
