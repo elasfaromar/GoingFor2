@@ -65,7 +65,7 @@
           font-size: 0.9rem;
         }
       }
-
+      
       &__checkbox {
         font-size: 0.9rem;
         margin-top: 0.625rem;
@@ -73,8 +73,22 @@
         input {
           margin: auto 0;
           margin-right: 0.25rem;
+      
         }
       }
     }
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  .Login {
+    background-color: #753;
+    color: #dcb;
+    outline: 5px dashed #000;
+  }
+
+  .Login__panel {
+    background-color: rgb(12, 12, 11);
+    color: #dcb;
   }
 }
