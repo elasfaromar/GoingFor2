@@ -35,14 +35,14 @@
       width: 5rem !important;
       max-width: 5rem !important;
       padding: 10px;
-      background-color: #0073e6; /* New color for header */
+      background-color: #D63731; /* New color for header */
       color: white;
       border-radius: 5px;
     }
   }
 
   &__head {
-    background-color: #cccccc;
+    background-color: #D63731; /* Updated color */
     font-weight: bold;
   }
 
@@ -55,7 +55,7 @@
 
   &__cell--time {
     font-weight: bold;
-    background-color: #0073e6;
+    background-color: #D63731; /* Updated color */
     color: white;
     border-bottom: solid 2px #ffffff !important;
   }
@@ -76,7 +76,7 @@
 
   .event-label {
     font-size: 1rem;
-    color: #0073e6;
+    color: #D63731; /* Updated event label color */
   }
 }
 
