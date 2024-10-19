@@ -1,9 +1,18 @@
 body {
   margin: 0;
+  
   overflow-x: hidden;
   font-weight: normal;
   font-family: "Segoe UI", "Segoe", "SegoeUI-Regular-final", Tahoma, Helvetica,
     Arial, sans-serif;
+    
+}
+@media (prefers-color-scheme:dark) {
+  .theme-a.adaptive {
+    background: #753;
+    color: #dcb;
+    outline: 5px dashed #000;
+  }
 }
 
 $theme: #e91c24;

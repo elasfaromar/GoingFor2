@@ -1,8 +1,8 @@
-import { Account } from "@prisma/client";
-import { prisma } from "../db";
+import { prisma } from "../db";  // Import the PrismaClient instance
 import { Ok, Err, Result } from "ts-results";
 
-export const findByEmail = async (email: string): Promise<Account | null> => {
+// Function to find an account by email
+export const findByEmail = async (email: string) => {
   const account = await prisma.account.findFirst({
     where: { email: email },
   });
@@ -14,11 +14,12 @@ export const findByEmail = async (email: string): Promise<Account | null> => {
   return account;
 };
 
+// Function to create a new account
 export const create = async (
   email: string,
   password: string,
   role = "USER",
-): Promise<Result<Account, Error>> => {
+): Promise<Result<any, Error>> => {
   const existingAccount = await findByEmail(email);
 
   if (existingAccount !== null) {

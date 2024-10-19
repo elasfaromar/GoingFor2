@@ -65,7 +65,7 @@ function Menu() {
         <CabinetSection
           title="Build Timetable"
           lineItems={[
-            <Link to="/build-timetable">Build Timetable</Link>,
+            <Link to="/timetables/build">Build Timetable</Link>,
           ]}
         />
         <CabinetSection
