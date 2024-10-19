@@ -9,7 +9,7 @@
     }
   
     a {
-      color: #0073e6;
+      color: #D63731;
       text-decoration: none;
       padding: 10px;
       display: block;
@@ -34,12 +34,25 @@
     }
   }
   
+  /* Banner (Header) Styling */
+  .layout__header {
+    background-color: #D63731 !important;
+    color: white !important;
+    font-family: "Copperplate", "Copperplate Gothic Light", "Copperplate Gothic Bold", sans-serif; /* Apply Copperplate-like font */
+  }
+  
+  /* Navigation bar (Tabs) Styling */
+  .layout__navigation {
+    background-color: #D63731 !important;
+    color: white !important;
+  }
+  
   .CabinetSection {
     margin-bottom: 20px;
     
     h2 {
       font-size: 1.5rem;
-      color: #d63731;
+      color: #D63731;
     }
   
     ul {
