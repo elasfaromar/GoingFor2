@@ -5,17 +5,27 @@ import { useState } from 'react';
 
 
 interface SearchSectionProps {
-  onSearch: (program:string) => void;
+  onSearch: (program:string, crn:string) => void;
 }
 function SearchSection({ onSearch }: SearchSectionProps) {
   const [selectedValue, setSelectedValue] = useState<string>('');
+  const [crnval, setCrnval] = useState<string>('');
 
 const handleChange = (event) => {
   setSelectedValue(event.target.value);
 };
+const handleCrn = (event) => {
+  setCrnval(event.target.value);
+  console.log(event.target.value)
+};
   return (
     <div className="SearchSection">
-      <button onClick={() => onSearch(selectedValue)}>Search</button>
+      <button onClick={() => { 
+        console.log(`This is crnValue: ${crnval}`)
+      onSearch(selectedValue, crnval)
+      }}>Search</button>
+
+      <input type="text" value={crnval} onChange={handleCrn}/>
 
       <select value={selectedValue} onChange={handleChange}>
         <option value="comp">COMP</option>

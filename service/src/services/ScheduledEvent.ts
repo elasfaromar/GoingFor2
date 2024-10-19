@@ -5,6 +5,8 @@ import { Result, Ok } from "ts-results";
 export const getFirst = async (
   count: number,
   program: string, // Add program parameter
+  crn: string
+  
 ): Promise<Result<any[], Error>> => {
   const events = await prisma.scheduledEvent.findMany({
     take: count,
@@ -12,15 +14,18 @@ export const getFirst = async (
       term: {
         contains: "Winter 2025 (January-April)",
       },
-      course: {
-        subjectCode: {
-          contains: program, // Use program parameter here
-        },
-      },
+      // course: {
+      //   subjectCode: {
+      //     contains: program, // Use program parameter here
+      //   },
+        
+      // },
+      crn: { contains: crn }
     },
     include: {
       course: true,
     },
+    
   });
 
   return Ok(events);

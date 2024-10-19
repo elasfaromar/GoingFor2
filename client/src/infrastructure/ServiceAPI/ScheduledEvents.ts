@@ -23,9 +23,10 @@ export interface ScheduledEvent {
   };
 }
 
-export const fetchScheduledEvents = async (program:string): Promise<ScheduledEvent[]> => {
+export const fetchScheduledEvents = async (program:string, crn:string): Promise<ScheduledEvent[]> => {
+  console.log(crn)
   const response = await fetch(
-    `${import.meta.env.VITE_API_ROOT}/api/v1/scheduledEvents?program=${program}`,
+    `${import.meta.env.VITE_API_ROOT}/api/v1/scheduledEvents?program=${program}&crn=${crn}`,
   );
   const json = await response.json();
 
