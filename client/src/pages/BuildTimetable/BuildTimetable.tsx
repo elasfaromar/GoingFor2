@@ -19,8 +19,8 @@ function BuildTimetable() {
   const [timetableName, setTimetableName] = useState<string>("");  // Challenge 2: Save and Display Timetable Name
   const navigate = useNavigate();
 
-  const fetchScheduledEvents = async () => {
-    const result = await ServiceAPI.fetchScheduledEvents();
+  const fetchScheduledEvents = async (program:string) => {
+    const result = await ServiceAPI.fetchScheduledEvents(program);
     setScheduledEvents(result);
   };
 

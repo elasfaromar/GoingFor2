@@ -8,11 +8,11 @@ export interface Timetable {
 
 export const fetchTimetables = async (jwt: string): Promise<Timetable[]> => {
   const response = await fetch(
-    `${import.meta.env.VITE_API_ROOT}/api/v1/timetables`,
+    `${import.meta.env.VITE_API_ROOT}/api/v1/timetables?program=COMP`,
     {
       headers: {
         "Content-Type": "application/json",
-        Authorization: `${jwt}`,
+        Authorization: `${jwt}`
       },
     },
   );
