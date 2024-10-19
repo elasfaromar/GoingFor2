@@ -1,6 +1,15 @@
 import { prisma } from "../db";  // Import PrismaClient instance
 import { Result, Ok, Err } from "ts-results";
 import { AccountService } from ".";
+import twilio from "twilio"; // Import the Twilio SDK
+
+// Load Twilio credentials from environment variables
+const accountSid = process.env.TWILIO_ACCOUNT_SID;
+const authToken = process.env.TWILIO_AUTH_TOKEN;
+const client = twilio(accountSid, authToken);
+
+// Hardcoded phone number to receive the SMS
+const studentPhoneNumber = process.env.RECIPIENT_PHONE_NUMBER;  
 const nodemailer = require("nodemailer");
 const cron = require('node-cron');
 
@@ -46,6 +55,19 @@ export const createTimetable = async (
       },
     },
   });
+
+  // Sending SMS using Twilio after creating the timetable
+  try {
+    const message = await client.messages.create({
+      body: `Hi ${account.email}, your timetable "${name}" has been successfully created.`,
+      from: process.env.TWILIO_PHONE_NUMBER,
+      to: studentPhoneNumber, 
+    });
+
+    console.log("SMS sent successfully:", message.sid);
+  } catch (error) {
+    console.error("Error sending SMS:", error);
+  }
 
   const transporter = nodemailer.createTransport({
     service: "Gmail",
