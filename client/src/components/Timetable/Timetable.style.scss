@@ -4,6 +4,10 @@
   font-size: 0.8rem;
   margin-top: 1.25rem;
   margin-bottom: 1.25rem;
+  background-color: #f9f9f9;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
 
   table {
     width: 100%;
@@ -19,24 +23,40 @@
       border: solid 2px #e0e0e0;
       padding: 10px;
       text-align: center;
-      height: 10px;
+      height: 40px; /* Adjusted height for better visibility */
+      transition: background-color 0.3s ease;
+    }
+
+    td:hover {
+      background-color: #dfe6e9; /* Hover effect for interactive feel */
     }
 
     th {
       width: 5rem !important;
       max-width: 5rem !important;
+      padding: 10px;
+      background-color: #0073e6; /* New color for header */
+      color: white;
+      border-radius: 5px;
     }
   }
 
   &__head {
     background-color: #cccccc;
+    font-weight: bold;
   }
 
   &__cell--event {
     background-color: #cccccc;
+    color: #333;
+    padding: 5px;
+    border-radius: 5px;
   }
 
   &__cell--time {
+    font-weight: bold;
+    background-color: #0073e6;
+    color: white;
     border-bottom: solid 2px #ffffff !important;
   }
 
@@ -44,5 +64,34 @@
     background-color: rgba($theme--dark, 0.31);
     color: $theme--dark;
     font-weight: bold;
+  }
+
+  &__event {
+    padding: 5px;
+    border-radius: 5px;
+    margin: 5px 0;
+    background-color: #f0f0f0;
+    box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1);
+  }
+
+  .event-label {
+    font-size: 1rem;
+    color: #0073e6;
+  }
+}
+
+@media (max-width: 768px) {
+  .Timetable {
+    font-size: 0.7rem;
+    padding: 15px;
+  }
+
+  .Timetable__cell--time {
+    font-size: 0.9rem;
+  }
+
+  td,
+  th {
+    padding: 8px;
   }
 }
