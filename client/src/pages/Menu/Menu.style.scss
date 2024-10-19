@@ -1,0 +1,67 @@
+.Menu {
+    display: flex;
+    flex-direction: column;
+    gap: 20px; /* Spacing between sections */
+    padding: 20px;
+  
+    &__section {
+      margin-bottom: 20px;
+    }
+  
+    a {
+      color: #D63731;
+      text-decoration: none;
+      padding: 10px;
+      display: block;
+      border-radius: 5px;
+      background-color: #f5f5f5;
+      margin-bottom: 10px;
+      transition: background-color 0.3s ease;
+  
+      &:hover {
+        background-color: #dfe6e9;
+      }
+    }
+  
+    /* Responsive Styles */
+    @media (max-width: 768px) {
+      padding: 10px;
+  
+      a {
+        font-size: 0.9rem;
+        padding: 8px;
+      }
+    }
+  }
+  
+  /* Banner (Header) Styling */
+  .layout__header {
+    background-color: #D63731 !important;
+    color: white !important;
+    font-family: "Copperplate", "Copperplate Gothic Light", "Copperplate Gothic Bold", sans-serif; /* Apply Copperplate-like font */
+  }
+  
+  /* Navigation bar (Tabs) Styling */
+  .layout__navigation {
+    background-color: #D63731 !important;
+    color: white !important;
+  }
+  
+  .CabinetSection {
+    margin-bottom: 20px;
+    
+    h2 {
+      font-size: 1.5rem;
+      color: #D63731;
+    }
+  
+    ul {
+      list-style-type: none;
+      padding: 0;
+    }
+  
+    li {
+      margin-bottom: 10px;
+    }
+  }
+  

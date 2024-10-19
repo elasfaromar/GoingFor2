@@ -30,13 +30,24 @@ function Timetable({ events }: TimetableProps) {
       event.endTime !== "NA",
   );
 
+  // Re-order days to start from Monday and move Sunday to the end
+  const orderedDays = [
+    Days.Monday,
+    Days.Tuesday,
+    Days.Wednesday,
+    Days.Thursday,
+    Days.Friday,
+    Days.Saturday,
+    Days.Sunday,
+  ];
+
   return (
     <div className="Timetable">
       <table>
         <thead>
           <tr className="Timetable__head">
             <th></th>
-            {Object.values(Days).map((day) => (
+            {orderedDays.map((day) => (
               <th key={day}>{day}</th>
             ))}
           </tr>
@@ -51,7 +62,7 @@ function Timetable({ events }: TimetableProps) {
                 <td className={i % 2 === 0 ? "Timetable__cell--time" : ""}>
                   {i % 2 === 0 ? timeLabel : null}
                 </td>
-                {Object.values(Days).map((day) => {
+                {orderedDays.map((day) => {
                   const eventsForCell = eventsToDisplay.filter(
                     (event) =>
                       event.days.includes(day) &&

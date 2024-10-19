@@ -18,9 +18,16 @@
 
     img {
       padding-top: 5.625rem;
-      max-width: 100%;
+      max-width: 75%;
       margin-bottom: 3.75rem;
+      animation-name: imgBurst;
+      animation-duration: 1s;
     }
+
+    @keyframes imgBurst {
+      from { opacity: 0; max-width: 60%; }
+      to { opacity: 1; max-width: 75%; }
+      }
 
     &__button {
       border: none;
