@@ -5,7 +5,10 @@ import { ScheduledEventService } from "../../services";
 const router = express.Router();
 
 const index = async (request: Request, response: Response) => {
-  const result = await ScheduledEventService.getFirst(10);
+  console.log(request)
+  // console.log(request.query)
+  // console.log(request.query.program)
+  const result = await ScheduledEventService.getFirst(10, String(request.query.program));
 
   return success(response, {
     data: result.val,

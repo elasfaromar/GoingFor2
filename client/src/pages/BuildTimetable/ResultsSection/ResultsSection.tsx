@@ -43,31 +43,16 @@ function ResultsSection({ scheduledEvents, addEvent }: ResultsSectionProps) {
                 : "ResultsSection__result--light-gray"
             }`}
           >
-            <div className="ResultsSection__result__topbar">
-              <div className="ResultsSection__add">
-                <button onClick={() => addEvent(event)}>Add</button>
-              </div>
-              <div className="ResultsSection__crn">
+            <div className="ResultsSection__result__b">
                 <a href={event.url} target="_blank" rel="noopener noreferrer">
-                  {event.crn}
+                  {event.course.shortTitle} - ({event.course.courseCode} {event.section}, {event.crn})
                 </a>
               </div>
-              <div className="ResultsSection__subject">
-                <a href={event.url} target="_blank" rel="noopener noreferrer">
-                  {event.course.subjectCode} {event.course.courseCode}
-                </a>
-              </div>
-              <div className="ResultsSection__section">{event.section}</div>
-              <div className="ResultsSection__title">
-                <a href={event.url} target="_blank" rel="noopener noreferrer">
-                  {event.course.shortTitle}
-                </a>
-              </div>
-              <div className="ResultsSection__credit">{event.credit}</div>
-              <div className="ResultsSection__type">{event.type}</div>
-              <div className="ResultsSection__instructor">
-                {event.instructor}
-              </div>
+
+            <div className="ResultsSection__result__content">
+              
+              <span><b>Credits:</b> {event.credit}   <b>Type:</b> {event.type}   <b>Instructor:</b> {event.instructor}</span>
+
             </div>
             <div className="ResultsSection__result__content">
               <div>
@@ -76,6 +61,9 @@ function ResultsSection({ scheduledEvents, addEvent }: ResultsSectionProps) {
               </div>
               <div>
                 <b>Section Information:</b> {event.description}
+              </div>
+              <div className="ResultsSection__add">
+                <button onClick={() => addEvent(event)}>Add</button>
               </div>
             </div>
           </div>
