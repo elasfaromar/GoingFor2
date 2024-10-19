@@ -16,6 +16,7 @@ function BuildTimetable() {
   const { jwt } = useAccountContext();
   const [scheduledEvents, setScheduledEvents] = useState<ScheduledEvent[]>([]);
   const [selectedEvents, setSelectedEvents] = useState<ScheduledEvent[]>([]);
+  const [timetableName, setTimetableName] = useState<string>("");  // Challenge 2: Save and Display Timetable Name
   const navigate = useNavigate();
 
   const fetchScheduledEvents = async () => {
@@ -25,20 +26,23 @@ function BuildTimetable() {
 
   const createTimetable = async () => {
     const result = await ServiceAPI.createTimetable(
-      new Date().toISOString(),
-      selectedEvents.map((event) => event.id.toString()),
-      jwt,
+      timetableName,  // Challenge 2: Save and Display Timetable Name
+      selectedEvents.map((event) => event.id.toString()),  // Challenge 2: Save and Display Timetable Name
+      jwt  // Challenge 2: Save and Display Timetable Name
     );
-
+    
+    // Challenge 2: Save and Display Timetable Name
     navigate(`/timetables/${result.data.id}`);
   };
 
-  const addEvent = (event: ScheduledEvent) => {
-    setSelectedEvents([...selectedEvents, event]);
+    // Challenge 2: Save and Display Timetable Name
+    const addEvent = (event: ScheduledEvent) => {
+    setSelectedEvents([...selectedEvents, event]);  // Challenge 2: Save and Display Timetable Name
   };
 
-  const removeEvent = (event: ScheduledEvent) => {
-    setSelectedEvents(selectedEvents.filter((e) => e.id !== event.id));
+    // Challenge 2: Save and Display Timetable Name
+    const removeEvent = (event: ScheduledEvent) => {
+    setSelectedEvents(selectedEvents.filter((e) => e.id !== event.id));  // Challenge 2: Save and Display Timetable Name
   };
 
   return (
@@ -47,11 +51,24 @@ function BuildTimetable() {
         <Section title="Search">
           <SearchSection onSearch={fetchScheduledEvents} />
         </Section>
+
+        <Section title="Timetable Name">
+          <input
+            type="text"
+            value={timetableName}
+            onChange={(e) => setTimetableName(e.target.value)}  // Challenge 2: Save and Display Timetable Name
+            placeholder="Enter a name for your timetable"
+          />
+          <button onClick={createTimetable}>Save Timetable</button>  {/* Challenge 2: Save and Display Timetable Name */}
+        </Section>
+
+        <h3>Saved Timetable: {timetableName || "No name saved yet"}</h3>  {/* Challenge 2: Save and Display Timetable Name */}
+
         {scheduledEvents.length > 0 && (
           <Section title="Results">
             <ResultsSection
               scheduledEvents={scheduledEvents}
-              addEvent={addEvent}
+              addEvent={addEvent}  // Challenge 2: Save and Display Timetable Name
             />
           </Section>
         )}
@@ -59,7 +76,7 @@ function BuildTimetable() {
           <Section title="Worksheet">
             <WorksheetSection
               selectedEvents={selectedEvents}
-              removeEvent={removeEvent}
+              removeEvent={removeEvent}  // Challenge 2: Save and Display Timetable Name
               createTimetable={createTimetable}
             />
           </Section>
@@ -77,3 +94,5 @@ function BuildTimetable() {
 }
 
 export default BuildTimetable;
+
+
