@@ -1,13 +1,13 @@
-import { Timetable } from "@prisma/client";
-import { prisma } from "../db";
+import { prisma } from "../db";  // Import PrismaClient instance
 import { Result, Ok, Err } from "ts-results";
 import { AccountService } from ".";
 
+// Create a new timetable for a given email
 export const createTimetable = async (
   email: string,
   name: string,
   scheduledEventIds: string[],
-): Promise<Result<Timetable, Error>> => {
+): Promise<Result<any, Error>> => {
   const account = await AccountService.findByEmail(email);
 
   if (account === null) {
@@ -37,9 +37,10 @@ export const createTimetable = async (
   return Ok(timetable);
 };
 
+// Get a timetable by ID
 export const getTimetableById = async (
   id: number,
-): Promise<Result<Timetable, Error>> => {
+): Promise<Result<any, Error>> => {
   const timetable = await prisma.timetable.findUnique({
     where: {
       id,
@@ -64,9 +65,10 @@ export const getTimetableById = async (
   return Ok(timetable);
 };
 
+// Get all timetables associated with a specific account
 export const getAccountTimetables = async (
   email: string,
-): Promise<Result<Timetable[], Error>> => {
+): Promise<Result<any[], Error>> => {
   const account = await AccountService.findByEmail(email);
 
   if (account === null) {

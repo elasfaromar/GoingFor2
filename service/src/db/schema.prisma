@@ -3,6 +3,7 @@
 
 generator client {
   provider = "prisma-client-js"
+  output   = "node_modules/@prisma/client"
 }
 
 datasource db {
@@ -41,7 +42,7 @@ model ScheduledEvent {
   createdAt                          DateTime         @default(now())
   updatedAt                          DateTime         @updatedAt
   timetableEvents                    TimetableEvent[]
-  maxRegistration                    Int
+  maxRegistration                    Int              @default(100)
 }
 
 model TimetableEvent {
