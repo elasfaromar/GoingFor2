@@ -1,12 +1,11 @@
-import { ScheduledEvent } from "@prisma/client";
 import { prisma } from "../db";  // Import PrismaClient instance
 import { Result, Ok } from "ts-results";
 
 // Function to get a list of scheduled events
 export const getFirst = async (
   count: number,
-  program: string,
-): Promise<Result<ScheduledEvent[], Error>> => {
+  program: string, // Add program parameter
+): Promise<Result<any[], Error>> => {
   const events = await prisma.scheduledEvent.findMany({
     take: count,
     where: {
@@ -15,7 +14,7 @@ export const getFirst = async (
       },
       course: {
         subjectCode: {
-          contains: program,
+          contains: program, // Use program parameter here
         },
       },
     },
