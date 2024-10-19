@@ -4,7 +4,6 @@ import { AccountService } from ".";
 
 
 
-
 // Create a new timetable for a given email
 export const createTimetable = async (
   email: string,
